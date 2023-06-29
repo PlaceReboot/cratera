@@ -17,3 +17,4 @@ It is built for the Roblox platform but support might exist for the luau binarie
 * A project for malicious purposes. (Including but not limited to backdoors, malware, etc.)
 * A project to be used in production.
 * Fast. It is not meant to be fast, it is meant to make debugging easier.
+* Beautiful. The code (atleast initially) isn't meant to look good or readable, it is meant to work.
