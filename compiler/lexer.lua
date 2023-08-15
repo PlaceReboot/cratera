@@ -1,3 +1,5 @@
+--WARNING THIS IS LEGACY CODE FROOM MY INITIAL ATTEMPT. IT PROBABLY DOES NOT WORK AND WILL NOT BE FIXED.
+
 local Declared = {}
 local gOffset = 0
 local operators = {'+', '-', '*', '/', '%', '^', '#', '==', '~=', '-=', '*=',
