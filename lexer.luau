@@ -5,7 +5,7 @@ a += 1
 print(a)
 ]]
 
-local cursor = 1
+local cursor = 0
 local function getCursor(steps)
 	steps = (steps or 0)+1
 	local pos = cursor+steps
@@ -27,7 +27,7 @@ local function Location(start, length)
 		Start = start,
 		End = start+length,
 		Length = length,
-		Raw = code:sub(start, start+length)
+		Raw = code:sub(start+1, start+length)
 	}
 end
 
@@ -317,7 +317,7 @@ local function treat()
 		or currentChar == "," then
 		consume()
 		print(currentChar)
-		return Lexeme(Location(start, 0), currentChar)
+		return Lexeme(Location(start, 1), currentChar)
 	elseif tonumber(currentChar) then
 		return readNumber(start)
 	elseif isAlpha(currentChar) or currentChar == "_" then
