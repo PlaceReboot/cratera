@@ -125,7 +125,8 @@ return function(code)
 		local delimiter = getCursor()
 		consume()
 
-		while getCursor() ~= delimiter do
+		while getCursor() and getCursor() ~= delimiter do
+			print(getCursor(), delimiter)
 			local char = getCursor()
 			if char == "0" or char == "\r" or char == "\z" then
 				return Lexeme(Location(start, cursor-start), "BrokenString")
@@ -241,8 +242,8 @@ return function(code)
 					consume(3)
 					return Lexeme(Location(start, 3), "ConcatAssign")
 				else
-					consume(3)
-					return Lexeme(Location(start, 3), "2Dots")
+					consume(2)
+					return Lexeme(Location(start, 2), "2Dots")
 				end
 			else
 				if nextChar:match("%d") then
@@ -308,7 +309,6 @@ return function(code)
 			or currentChar == "#"
 			or currentChar == "," then
 			consume()
-			print(currentChar)
 			return Lexeme(Location(start, 1), currentChar)
 		elseif tonumber(currentChar) then
 			return readNumber(start)
