@@ -126,7 +126,6 @@ return function(code)
 		consume()
 
 		while getCursor() and getCursor() ~= delimiter do
-			print(getCursor(), delimiter)
 			local char = getCursor()
 			if char == "0" or char == "\r" or char == "\z" then
 				return Lexeme(Location(start, cursor-start), "BrokenString")
@@ -331,12 +330,14 @@ return function(code)
 			table.insert(Tokens, treat())
 		end
 	end
-
+	local i = 0
 	while getCursor() do
 
 		local response = Next()
-
-		task.wait()
+		i+= 1
+		if i %500 == 0 then
+			task.wait() --added so it stops hanging on long code
+		end
 	end
 	return Tokens
 end
